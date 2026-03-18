@@ -1,0 +1,49 @@
+/* Footer.module.css — RED + BLACK THEME */
+
+.footer {
+  background-color: #0a0a0a;
+  border-top: 1px solid rgba(239, 68, 68, 0.12);
+  padding: 1.5rem 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left  { flex: 1; text-align: left; }
+.center { flex: 1; display: flex; justify-content: center; gap: 1.5rem; }
+.right  { flex: 1; text-align: right; }
+
+/* Text links — RED on hover */
+.textLink {
+  color: #525252;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+.textLink:hover { color: #ef4444; }
+
+/* Icon links — RED on hover */
+.iconLink {
+  color: #525252;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+.iconLink:hover {
+  color: #ef4444;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .container { flex-direction: column; gap: 1.5rem; }
+  .left, .right { text-align: center; }
+}

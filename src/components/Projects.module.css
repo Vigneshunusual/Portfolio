@@ -1,0 +1,341 @@
+/* =============================================
+   Projects.module.css
+   Slider — 2 cards visible, arrows to navigate
+   RED + BLACK theme
+   ============================================= */
+
+.section {
+  padding: 80px 0 100px;
+  background: #080808;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────
+   TILTED MARKER HEADING
+───────────────────────────────── */
+.headerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+  padding-top: 2rem;
+}
+.mainTitle {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  z-index: 1;
+  transform: rotate(-3deg);
+}
+.mainTitle::before {
+  content: '';
+  position: absolute;
+  bottom: 28%; left: -4%;
+  width: 106%; height: 18px;
+  background-color: #ef4444;
+  z-index: -1; border-radius: 4px;
+  transform: rotate(-1deg); opacity: 0.75;
+}
+.mainTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 5%; left: 2%;
+  width: 96%; height: 18px;
+  background-color: #991b1b;
+  z-index: -2; border-radius: 4px;
+  transform: rotate(3deg); opacity: 0.6;
+}
+
+/* ─────────────────────────────────
+   SLIDER WRAPPER
+   Arrow + Viewport + Arrow
+───────────────────────────────── */
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* ─────────────────────────────────
+   VIEWPORT — clips the cards
+───────────────────────────────── */
+.viewport {
+  flex: 1;
+  overflow: hidden;
+  /* Reserve fixed height so arrows don't jump */
+  min-height: 480px;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ─────────────────────────────────
+   GRID — always 2 columns inside viewport
+───────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  width: 100%;
+}
+
+/* ─────────────────────────────────
+   ARROWS
+───────────────────────────────── */
+.arrow {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: #111111;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #a3a3a3;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+.arrow:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+.arrow:active {
+  transform: scale(0.96);
+}
+.arrowDisabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────
+   CARD
+───────────────────────────────── */
+.card {
+  background: #111111;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(239,68,68,0.35);
+  box-shadow: 0 14px 44px rgba(239,68,68,0.1);
+}
+
+/* ─────────────────────────────────
+   IMAGE / SVG on top
+───────────────────────────────── */
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.imageWrap svg {
+  width: 100%; height: 100%;
+  transition: transform 0.45s ease;
+}
+.card:hover .imageWrap svg {
+  transform: scale(1.03);
+}
+
+/* Number badge — bottom left of image */
+.numBadge {
+  position: absolute;
+  bottom: 10px; left: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(239,68,68,0.85);
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 2px;
+}
+
+/* Status badge — top right */
+.statusBadge {
+  position: absolute;
+  top: 10px; right: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(0,0,0,0.75);
+  padding: 3px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.statusDot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(1.3);} }
+
+/* ─────────────────────────────────
+   CARD BODY
+───────────────────────────────── */
+.body {
+  padding: 1.4rem 1.5rem 1.7rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Tech tags */
+.tags {
+  display: flex; flex-wrap: wrap; gap: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+.tag {
+  display: inline-block;
+  padding: 3px 9px;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 99px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  color: #f87171;
+  transition: all 0.2s;
+}
+.tag:hover {
+  background: rgba(239,68,68,0.15);
+  border-color: rgba(239,68,68,0.4);
+}
+
+/* Title */
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f5f5f5;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Description */
+.desc {
+  font-size: 0.865rem;
+  color: #525252;
+  line-height: 1.75;
+  margin-bottom: 1.4rem;
+  flex: 1;
+}
+
+/* ─────────────────────────────────
+   BUTTONS
+───────────────────────────────── */
+.actions {
+  display: flex; gap: 0.7rem;
+  margin-top: auto;
+}
+.btn {
+  display: inline-flex; align-items: center;
+  justify-content: center; gap: 6px;
+  padding: 0.58rem 1.1rem;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  text-decoration: none;
+  border: none; outline: none;
+  flex: 1;
+}
+.btnCode {
+  background: transparent;
+  color: #737373;
+  border: 1px solid rgba(255,255,255,0.09);
+}
+.btnCode:hover {
+  color: #f5f5f5;
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-1px);
+}
+.btnLive {
+  background: #ef4444;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(239,68,68,0.28);
+}
+.btnLive:hover {
+  background: #f87171;
+  box-shadow: 0 6px 20px rgba(239,68,68,0.42);
+  transform: translateY(-2px);
+}
+.btnDisabled {
+  background: transparent;
+  color: #333;
+  border: 1px solid rgba(255,255,255,0.04);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────
+   DOT INDICATORS
+───────────────────────────────── */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 2rem;
+}
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #222;
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  padding: 0;
+}
+.dot:hover { background: #ef4444; transform: scale(1.2); }
+.dotActive {
+  background: #ef4444;
+  width: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(239,68,68,0.5);
+}
+
+/* Page counter */
+.counter {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #333;
+}
+.counter span { color: #525252; }
+
+/* ─────────────────────────────────
+   RESPONSIVE
+───────────────────────────────── */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .viewport { min-height: auto; }
+  .sliderWrapper { gap: 0.7rem; }
+  .arrow { width: 40px; height: 40px; }
+}
+@media (max-width: 640px) {
+  .mainTitle { font-size: 1.6rem; }
+  .headerWrapper { margin-bottom: 3rem; }
+  .body { padding: 1.1rem 1.1rem 1.4rem; }
+  .btn { font-size: 0.78rem; padding: 0.5rem 0.8rem; }
+  .arrow { width: 36px; height: 36px; }
+}

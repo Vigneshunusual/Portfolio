@@ -1,0 +1,119 @@
+/* About.module.css — RED + BLACK THEME */
+
+.headerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4.5rem;
+  padding-top: 2rem;
+}
+
+.mainTitle {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  z-index: 1;
+  transform: rotate(-3deg);
+}
+
+/* RED top highlight */
+.mainTitle::before {
+  content: '';
+  position: absolute;
+  bottom: 28%;
+  left: -4%;
+  width: 106%;
+  height: 18px;
+  background-color: #ef4444;
+  z-index: -1;
+  border-radius: 4px;
+  transform: rotate(-1deg);
+  opacity: 0.75;
+}
+
+/* DARK RED bottom highlight */
+.mainTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
+  width: 96%;
+  height: 18px;
+  background-color: #991b1b;
+  z-index: -2;
+  border-radius: 4px;
+  transform: rotate(3deg);
+  opacity: 0.6;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Card */
+.card {
+  background: #111111;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 10px 40px rgba(239, 68, 68, 0.1);
+}
+
+/* Card header */
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.iconWrapper {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f5f5f5;
+  margin: 0 0 0.5rem 0;
+}
+
+/* Divider — RED gradient */
+.divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(239,68,68,0.4), transparent);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.card:hover .divider {
+  background: linear-gradient(90deg, transparent, #ef4444, transparent);
+  box-shadow: 0 0 12px rgba(239,68,68,0.4);
+}
+
+/* Text */
+.cardText {
+  color: #737373;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .headerWrapper { margin-bottom: 3.5rem; }
+  .mainTitle { font-size: 2.2rem; }
+  .grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .card { padding: 2rem 1.5rem; }
+}
