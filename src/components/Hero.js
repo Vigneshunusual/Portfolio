@@ -3,10 +3,11 @@ import styles from "./Hero.module.css";
 
 // ── Role typing animation (left side) ──
 const ROLES = [
+  "Full-Stack Enthusiast",
   "Frontend Developer",
   "React.js Specialist",
   "Python & Django Developer",
-  "Full-Stack Enthusiast",
+  
 ];
 
 // ── Code lines typed one by one on the right card ──
@@ -214,7 +215,7 @@ export default function Hero() {
               Get In Touch
             </button> */}
             <a
-              href="/Vignesh_R_Resume.pdf"
+              href="/Vignesh_R.pdf"
               download
               className={`${styles.btn} ${styles.btnGhost}`}
             >
