@@ -215,7 +215,7 @@ export default function Hero() {
               Get In Touch
             </button> */}
             <a
-              href="/Vignesh_R.pdf"
+              href="/Vignesh_Resume.pdf"
               download
               className={`${styles.btn} ${styles.btnGhost}`}
             >
